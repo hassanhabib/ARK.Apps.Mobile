@@ -34,7 +34,7 @@ namespace ARK.Apps.Mobile.Infrastructures.Builds
                             .AddSetupDotNetStep(version: "9.0.101")
                             .AddGenericStep(
                                 name:"Install .NET MAUI",
-                                runCommand: "dotnet worload install maui")
+                                runCommand: "dotnet workload install maui")
 
                             .AddRestoreStep()
                             .AddBuildStep()
