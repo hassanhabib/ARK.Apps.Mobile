@@ -32,6 +32,10 @@ namespace ARK.Apps.Mobile.Infrastructures.Builds
                         .RunsOn(BuildMachines.Windows2022)
                             .AddCheckoutStep("Check out")
                             .AddSetupDotNetStep(version: "9.0.101")
+                            .AddGenericStep(
+                                name:"Install .NET MAUI",
+                                runCommand: "dotnet worload install maui")
+
                             .AddRestoreStep()
                             .AddBuildStep()
                             .AddTestStep(

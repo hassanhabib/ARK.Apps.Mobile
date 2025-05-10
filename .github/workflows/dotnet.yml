@@ -18,6 +18,8 @@ jobs:
       with:
         dotnet-version: 9.0.101
         include-prerelease: false
+    - name: Install .NET MAUI
+      run: dotnet worload install maui
     - name: Restore
       run: dotnet restore
     - name: Build
