@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using ARK.Apps.Mobile.Brokers.Arks;
 using ARK.Apps.Mobile.Brokers.Loggings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,10 +25,15 @@ namespace ARK.Apps.Mobile
 
             mauiAppBuilder.Services.AddMauiBlazorWebView();
             mauiAppBuilder.Services.AddLogging();
+            mauiAppBuilder.Services.AddHttpClient();
 
             mauiAppBuilder.Services.AddTransient<
                 ILoggingBroker,
                 LoggingBroker>();
+
+            mauiAppBuilder.Services.AddTransient<
+                IArkApiBroker,
+                ArkApiBroker>();
 
 #if DEBUG
     		mauiAppBuilder.Services.AddBlazorWebViewDeveloperTools();
