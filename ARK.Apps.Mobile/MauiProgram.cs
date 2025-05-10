@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using ARK.Apps.Mobile.Brokers.Loggings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
@@ -22,6 +23,11 @@ namespace ARK.Apps.Mobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"));
 
             mauiAppBuilder.Services.AddMauiBlazorWebView();
+            mauiAppBuilder.Services.AddLogging();
+
+            mauiAppBuilder.Services.AddTransient<
+                ILoggingBroker,
+                LoggingBroker>();
 
 #if DEBUG
     		mauiAppBuilder.Services.AddBlazorWebViewDeveloperTools();
