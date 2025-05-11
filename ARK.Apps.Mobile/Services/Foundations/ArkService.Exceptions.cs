@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Models.Arks;
@@ -41,6 +42,16 @@ namespace ARK.Apps.Mobile.Services.Foundations
                 throw await CreateAndLogDependencyExceptionAsync(
                     failedArkDependencyException);
             }
+            catch (Exception exception)
+            {
+                var failedArkServiceException =
+                    new FailedArkServiceException(
+                        message: "Failed ark service error occurred, contact support.",
+                        innerException: exception);
+
+                throw await CreateAndLogServiceExceptionAsync(
+                    failedArkServiceException);
+            }
         }
 
         private async ValueTask<ArkDependencyException> CreateAndLogCriticalDependencyExceptionAsync(
@@ -67,6 +78,19 @@ namespace ARK.Apps.Mobile.Services.Foundations
             await this.loggingBroker.LogErrorAsync(arkDependencyException);
 
             return arkDependencyException;
+        }
+
+        private async ValueTask<ArkServiceException> CreateAndLogServiceExceptionAsync(
+          Xeption exception)
+        {
+            var arkServiceException =
+                new ArkServiceException(
+                    message: "Ark service error occurred, contact support.",
+                    innerException: exception);
+
+            await this.loggingBroker.LogErrorAsync(arkServiceException);
+
+            return arkServiceException;
         }
     }
 }
