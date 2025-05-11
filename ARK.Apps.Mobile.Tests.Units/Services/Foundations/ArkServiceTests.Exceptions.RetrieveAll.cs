@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -117,6 +118,51 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Foundations
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogErrorAsync(It.Is(
                     SameExceptionAs(expectedArkDependencyException))),
+                        Times.Once);
+
+            this.arkApiBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task ShouldThrowServiceExceptionIfServiceErrorOccurrsAndLogItAsync()
+        {
+            // given
+            var serviceException = new Exception();
+
+            var failedArkServiceException =
+                new FailedArkServiceException(
+                    message: "Failed ark service error occurred, contact support.",
+                    innerException: serviceException);
+
+            var expectedArkServiceException =
+                new ArkServiceException(
+                    message: "Ark service error occurred, contact support.",
+                    innerException: failedArkServiceException);
+
+            this.arkApiBrokerMock.Setup(broker =>
+                broker.GetAllArksAsync())
+                    .ThrowsAsync(serviceException);
+
+            // when
+            ValueTask<List<Ark>> retrieveAllArksTask =
+                this.arkService.RetrieveAllArksAsync();
+
+            ArkServiceException actualArkServiceException =
+                await Assert.ThrowsAsync<ArkServiceException>(
+                    retrieveAllArksTask.AsTask);
+
+            // then
+            actualArkServiceException.Should().BeEquivalentTo(
+                expectedArkServiceException);
+
+            this.arkApiBrokerMock.Verify(broker =>
+                broker.GetAllArksAsync(),
+                    Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogErrorAsync(It.Is(
+                    SameExceptionAs(expectedArkServiceException))),
                         Times.Once);
 
             this.arkApiBrokerMock.VerifyNoOtherCalls();
