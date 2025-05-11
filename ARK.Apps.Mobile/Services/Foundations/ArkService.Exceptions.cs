@@ -31,6 +31,16 @@ namespace ARK.Apps.Mobile.Services.Foundations
                 throw await CreateAndLogCriticalDependencyExceptionAsync(
                     failedArkConfigurationException);
             }
+            catch (HttpResponseException httpResponseException)
+            {
+                var failedArkDependencyException =
+                    new FailedArkDependencyException(
+                        message: "Failed ark dependency error occurred, contact support.",
+                        innerException: httpResponseException);
+
+                throw await CreateAndLogDependencyExceptionAsync(
+                    failedArkDependencyException);
+            }
         }
 
         private async ValueTask<ArkDependencyException> CreateAndLogCriticalDependencyExceptionAsync(
@@ -42,6 +52,19 @@ namespace ARK.Apps.Mobile.Services.Foundations
                     innerException: exception);
 
             await this.loggingBroker.LogCriticalAsync(arkDependencyException);
+
+            return arkDependencyException;
+        }
+
+        private async ValueTask<ArkDependencyException> CreateAndLogDependencyExceptionAsync(
+           Xeption exception)
+        {
+            var arkDependencyException =
+                new ArkDependencyException(
+                    message: "Ark dependency error occurred, contact support.",
+                    innerException: exception);
+
+            await this.loggingBroker.LogErrorAsync(arkDependencyException);
 
             return arkDependencyException;
         }
