@@ -68,5 +68,59 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Foundations
             this.arkApiBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Fact]
+        public async Task ShouldThrowDependencyExceptionIfDependencyErrorOccurrsAndLogItAsync()
+        {
+            // given
+            var randomHttpResponseMessage =
+                new HttpResponseMessage();
+
+            string someResponseMessage =
+                GetRandomString();
+
+            var httpResponseUrlNotFoundException =
+                new HttpResponseException(
+                    httpResponseMessage: randomHttpResponseMessage,
+                    message: someResponseMessage);
+
+            var failedArkDependencyException =
+                new FailedArkDependencyException(
+                    message: "Failed ark dependency error occurred, contact support.",
+                    innerException: httpResponseUrlNotFoundException);
+
+            var expectedArkDependencyException =
+                new ArkDependencyException(
+                    message: "Ark dependency error occurred, contact support.",
+                    innerException: failedArkDependencyException);
+
+            this.arkApiBrokerMock.Setup(broker =>
+                broker.GetAllArksAsync())
+                    .ThrowsAsync(httpResponseUrlNotFoundException);
+
+            // when
+            ValueTask<List<Ark>> retrieveAllArksTask =
+                this.arkService.RetrieveAllArksAsync();
+
+            ArkDependencyException actualArkDependencyException =
+                await Assert.ThrowsAsync<ArkDependencyException>(
+                    retrieveAllArksTask.AsTask);
+
+            // then
+            actualArkDependencyException.Should().BeEquivalentTo(
+                expectedArkDependencyException);
+
+            this.arkApiBrokerMock.Verify(broker =>
+                broker.GetAllArksAsync(),
+                    Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogErrorAsync(It.Is(
+                    SameExceptionAs(expectedArkDependencyException))),
+                        Times.Once);
+
+            this.arkApiBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
