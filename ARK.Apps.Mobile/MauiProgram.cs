@@ -4,6 +4,7 @@
 
 using ARK.Apps.Mobile.Brokers.Arks;
 using ARK.Apps.Mobile.Brokers.Loggings;
+using ARK.Apps.Mobile.Services.Foundations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
@@ -34,6 +35,10 @@ namespace ARK.Apps.Mobile
             mauiAppBuilder.Services.AddTransient<
                 IArkApiBroker,
                 ArkApiBroker>();
+
+            mauiAppBuilder.Services.AddTransient<
+                IArkService,
+                ArkService>();
 
 #if DEBUG
     		mauiAppBuilder.Services.AddBlazorWebViewDeveloperTools();
