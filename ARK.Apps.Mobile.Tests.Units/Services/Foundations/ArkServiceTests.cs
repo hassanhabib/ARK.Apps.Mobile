@@ -14,6 +14,8 @@ using Tynamix.ObjectFiller;
 using Xeptions;
 using System.Linq;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using Xeptions;
 
 namespace ARK.Apps.Mobile.Tests.Units.Services.Foundations
 {
@@ -35,6 +37,12 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Foundations
                 arkApiBroker: this.arkApiBrokerMock.Object,
                 loggingBroker: this.loggingBrokerMock.Object);
         }
+
+        private string GetRandomString() =>
+            new MnemonicString(wordCount: GetRandomNumber()).GetValue();
+
+        private Expression<Func<Xeption, bool>> SameExceptionAs(Xeption expectedException) =>
+            actualException => actualException.SameExceptionAs(expectedException);
 
         private List<Ark> CreateRandomArks() =>
             CreateArkFiller().Create(count: GetRandomNumber()).ToList();
