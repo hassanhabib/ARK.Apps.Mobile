@@ -23,7 +23,7 @@ namespace ARK.Apps.Mobile.Services.Foundations
             this.loggingBroker = loggingBroker;
         }
 
-        public ValueTask<List<Ark>> RetrieveAllArksAsync() =>
-            throw new System.NotImplementedException();
+        public async ValueTask<List<Ark>> RetrieveAllArksAsync() =>
+            await this.arkApiBroker.GetAllArksAsync();
     }
 }
