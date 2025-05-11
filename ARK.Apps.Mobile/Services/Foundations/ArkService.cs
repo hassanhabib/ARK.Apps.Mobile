@@ -10,7 +10,7 @@ using ARK.Apps.Mobile.Models.Arks;
 
 namespace ARK.Apps.Mobile.Services.Foundations
 {
-    internal class ArkService : IArkService
+    internal partial class ArkService : IArkService
     {
         private readonly IArkApiBroker arkApiBroker;
         private readonly ILoggingBroker loggingBroker;
@@ -23,7 +23,7 @@ namespace ARK.Apps.Mobile.Services.Foundations
             this.loggingBroker = loggingBroker;
         }
 
-        public async ValueTask<List<Ark>> RetrieveAllArksAsync() =>
-            await this.arkApiBroker.GetAllArksAsync();
+        public ValueTask<List<Ark>> RetrieveAllArksAsync() => TryCatch(async () =>
+            await this.arkApiBroker.GetAllArksAsync());
     }
 }
