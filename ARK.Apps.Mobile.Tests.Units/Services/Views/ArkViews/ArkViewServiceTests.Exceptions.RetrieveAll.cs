@@ -60,7 +60,6 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
             this.loggingBrokerMock.VerifyNoOtherCalls();
         }
 
-
         [Fact]
         public async Task ShouldThrowServiceExceptionOnRetrieveAllIfServiceErrorOccurredAndLogItAsync()
         {
