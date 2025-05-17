@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
-using Syncfusion.Blazor;
 
 namespace ARK.Apps.Mobile
 {
@@ -27,7 +26,6 @@ namespace ARK.Apps.Mobile
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular"));
 
             mauiAppBuilder.Services.AddMauiBlazorWebView();
-            mauiAppBuilder.Services.AddSyncfusionBlazor();
             mauiAppBuilder.Services.AddLogging();
             mauiAppBuilder.Services.AddHttpClient();
 
