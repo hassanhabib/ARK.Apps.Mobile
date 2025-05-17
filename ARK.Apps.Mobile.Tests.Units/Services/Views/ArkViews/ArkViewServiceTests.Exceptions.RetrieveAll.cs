@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
@@ -53,6 +54,52 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogErrorAsync(It.Is(
                     SameExceptionAs(expectedArkViewDependencyException))),
+                        Times.Once);
+
+            this.arkServiceMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
+
+
+        [Fact]
+        public async Task ShouldThrowServiceExceptionOnRetrieveAllIfServiceErrorOccurredAndLogItAsync()
+        {
+            // given
+            var someServiceExeption = new Exception();
+
+            var failedArkViewServiceException =
+                new FailedArkViewServiceException(
+                    message: "Failed ark view service error occurred, contact support.",
+                    innerException: someServiceExeption);
+
+            var expectedArkViewServiceException =
+                new ArkViewServiceException(
+                    message: "Ark view service error occurred, contact support.",
+                    innerException: failedArkViewServiceException);
+
+            this.arkServiceMock.Setup(service =>
+                service.RetrieveAllArksAsync())
+                    .ThrowsAsync(someServiceExeption);
+
+            // when
+            ValueTask<List<ArkView>> retrieveAllArkViewsTask =
+                this.arkViewService.RetrieveAllArkViewsAsync();
+
+            ArkViewServiceException actualArkViewServiceException =
+                await Assert.ThrowsAsync<ArkViewServiceException>(
+                    testCode: retrieveAllArkViewsTask.AsTask);
+
+            // then
+            actualArkViewServiceException.Should().BeEquivalentTo(
+                expectedArkViewServiceException);
+
+            this.arkServiceMock.Verify(service =>
+                service.RetrieveAllArksAsync(),
+                    Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogErrorAsync(It.Is(
+                    SameExceptionAs(expectedArkViewServiceException))),
                         Times.Once);
 
             this.arkServiceMock.VerifyNoOtherCalls();
