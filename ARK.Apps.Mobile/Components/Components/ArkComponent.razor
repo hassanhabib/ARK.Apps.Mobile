@@ -2,7 +2,7 @@
 @using PrettyBlazor
 
 <CarouselBase @ref=@Carousel>
-    <Iterations Items=@ArkViews Context="arkView">
-        <CarouselItemBase />
+    <Iterations Items=@ArkViews Context=arkView>
+        <CarouselItemBase Value="@arkView.Act" />
     </Iterations>
 </CarouselBase>

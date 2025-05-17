@@ -59,7 +59,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
             foreach(ArkView arkView in retrievedArkViews)
             {
                 bool containsAct = renderedCarouselComponentItems
-                    .Any(item => item.Markup.Contains(arkView.Act));
+                    .Any(item => item.Instance.Value == arkView.Act);
 
                 containsAct.Should().BeTrue();
             }
