@@ -1,0 +1,28 @@
+﻿// ---------------------------------------------------------------------------------- 
+// Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
+// ----------------------------------------------------------------------------------
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ARK.Apps.Mobile.Components.Bases;
+using ARK.Apps.Mobile.Models.Views.ArkViews;
+using ARK.Apps.Mobile.Services.Views.ArkViews;
+using Microsoft.AspNetCore.Components;
+
+namespace ARK.Apps.Mobile.Components.Components
+{
+    public partial class ArkComponent : ComponentBase
+    {
+        [Inject]
+        public IArkViewService ArkViewService { get; set; }
+
+        public CarouselBase Carousel { get; set; }
+        public List<ArkView> ArkViews { get; set; } = new List<ArkView>();
+
+        protected async override Task OnInitializedAsync()
+        {
+            this.ArkViews = await this.ArkViewService
+                .RetrieveAllArkViewsAsync();
+        }
+    }
+}

@@ -8,7 +8,7 @@ using ARK.Apps.Mobile.Models.Views.ArkViews;
 
 namespace ARK.Apps.Mobile.Services.Views.ArkViews
 {
-    internal interface IArkViewService
+    public interface IArkViewService
     {
         ValueTask<List<ArkView>> RetrieveAllArkViewsAsync();
     }
