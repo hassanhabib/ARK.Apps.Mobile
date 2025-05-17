@@ -5,6 +5,7 @@
 using ARK.Apps.Mobile.Brokers.Arks;
 using ARK.Apps.Mobile.Brokers.Loggings;
 using ARK.Apps.Mobile.Services.Foundations;
+using ARK.Apps.Mobile.Services.Views.ArkViews;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Hosting;
@@ -18,7 +19,7 @@ namespace ARK.Apps.Mobile
         {
             MauiAppBuilder mauiAppBuilder =
                 MauiApp.CreateBuilder();
-            
+
             mauiAppBuilder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -40,9 +41,13 @@ namespace ARK.Apps.Mobile
                 IArkService,
                 ArkService>();
 
+            mauiAppBuilder.Services.AddTransient<
+                IArkViewService,
+                ArkViewService>();
+
 #if DEBUG
-    		mauiAppBuilder.Services.AddBlazorWebViewDeveloperTools();
-    		mauiAppBuilder.Logging.AddDebug();
+            mauiAppBuilder.Services.AddBlazorWebViewDeveloperTools();
+            mauiAppBuilder.Logging.AddDebug();
 #endif
 
             return mauiAppBuilder.Build();
