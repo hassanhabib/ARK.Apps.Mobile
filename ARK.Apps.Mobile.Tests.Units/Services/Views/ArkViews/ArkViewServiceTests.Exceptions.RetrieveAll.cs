@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
-using ARK.Apps.Mobile.Services.Views.ArkViews.Exceptions;
+using ARK.Apps.Mobile.Models.Views.ArkViews.Exceptions;
 using FluentAssertions;
 using Moq;
 using Xeptions;
@@ -28,7 +28,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
 
             var failedArkViewDependencyException =
                 new FailedArkViewDependencyException(
-                    message: "Faild ark view dependency error occurred, contact support.",
+                    message: "Failed ark view dependency error occurred, contact support.",
                     innerException: someInnerException);
 
             var expectedArkViewDependencyException =

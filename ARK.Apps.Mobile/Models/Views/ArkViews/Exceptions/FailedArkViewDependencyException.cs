@@ -4,11 +4,11 @@
 
 using Xeptions;
 
-namespace ARK.Apps.Mobile.Services.Views.ArkViews.Exceptions
+namespace ARK.Apps.Mobile.Models.Views.ArkViews.Exceptions
 {
-    internal class ArkViewDependencyException : Xeption
+    internal class FailedArkViewDependencyException : Xeption
     {
-        public ArkViewDependencyException(string message, Xeption innerException)
+        public FailedArkViewDependencyException(string message, Xeption innerException)
             : base(message, innerException) { }
     }
 }

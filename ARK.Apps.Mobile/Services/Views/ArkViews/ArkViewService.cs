@@ -8,12 +8,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Brokers.Loggings;
 using ARK.Apps.Mobile.Models.Arks;
+using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
 using ARK.Apps.Mobile.Services.Foundations;
 
 namespace ARK.Apps.Mobile.Services.Views.ArkViews
 {
-    internal class ArkViewService : IArkViewService
+    internal partial class ArkViewService
     {
         private readonly IArkService arkService;
         private readonly ILoggingBroker loggingBroker;
@@ -26,13 +27,14 @@ namespace ARK.Apps.Mobile.Services.Views.ArkViews
             this.loggingBroker = loggingBroker;
         }
 
-        public async ValueTask<List<ArkView>> RetrieveAllArkViewsAsync()
+        public ValueTask<List<ArkView>> RetrieveAllArkViewsAsync() =>
+        TryCatch(async () =>
         {
             List<Ark> retrievedArks =
                 await this.arkService.RetrieveAllArksAsync();
 
             return retrievedArks.Select(MapToArkView()).ToList();
-        }
+        });
 
         private static Func<Ark, ArkView> MapToArkView()
         {
