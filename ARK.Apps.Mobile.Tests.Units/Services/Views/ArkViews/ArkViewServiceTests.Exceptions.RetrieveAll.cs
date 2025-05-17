@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
@@ -15,21 +16,16 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
 {
     public partial class ArkViewServiceTests
     {
-        [Fact]
-        public async Task ShouldThrowDependencyExceptionOnRetrieveAllIfDependnecyErrorOccurredAndLogItAsync()
+        [Theory]
+        [MemberData(nameof(ArkDependencyExceptions))]
+        public async Task ShouldThrowDependencyExceptionOnRetrieveAllIfDependnecyErrorOccurredAndLogItAsync(
+            Xeption arkDependencyException)
         {
             // given
-            var someInnerException = new Xeption();
-
-            var arkDependencyException =
-                new ArkDependencyException(
-                    message: "Some message",
-                    someInnerException);
-
             var failedArkViewDependencyException =
                 new FailedArkViewDependencyException(
                     message: "Failed ark view dependency error occurred, contact support.",
-                    innerException: someInnerException);
+                    innerException: (Xeption) arkDependencyException.InnerException);
 
             var expectedArkViewDependencyException =
                 new ArkViewDependencyException(

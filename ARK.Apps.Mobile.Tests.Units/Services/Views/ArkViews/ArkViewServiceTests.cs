@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ARK.Apps.Mobile.Brokers.Loggings;
+using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Services.Foundations;
 using ARK.Apps.Mobile.Services.Views.ArkViews;
 using Moq;
@@ -48,6 +49,18 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
                     Act = GetRandomString()
                 };
             }).ToList<dynamic>();
+        }
+
+        public static TheoryData<Xeption> ArkDependencyExceptions()
+        {
+            var someInnerException = new Xeption();
+            string someMesasge = GetRandomString();
+
+            return new TheoryData<Xeption>
+            {
+                new ArkDependencyException(someMesasge, someInnerException),
+                new ArkServiceException(someMesasge, someInnerException)
+            };
         }
 
         private static int GetRandomNumber() =>
