@@ -4,14 +4,10 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ARK.Apps.Mobile.Brokers.Loggings;
-using ARK.Apps.Mobile.Models.Arks;
 using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
 using ARK.Apps.Mobile.Models.Views.ArkViews.Exceptions;
-using ARK.Apps.Mobile.Services.Foundations;
 using Xeptions;
 
 namespace ARK.Apps.Mobile.Services.Views.ArkViews
@@ -44,8 +40,17 @@ namespace ARK.Apps.Mobile.Services.Views.ArkViews
                         message: "Failed ark view dependency error occurred, contact support.",
                         innerException: (Xeption)arkServiceException.InnerException);
 
-                throw await CreateAndLogArkViewDependencyExceptionAsync(
-                    failedArkViewDependencyException);
+                throw await CreateAndLogArkViewDependencyExceptionAsync(failedArkViewDependencyException);
+            }
+            catch (Exception exception)
+            {
+                var failedArkViewServiceException =
+                    new FailedArkViewServiceException(
+                        message: "Failed ark view service error occurred, contact support.",
+                        innerException: exception);
+
+                throw await CreateAndLogArkViewServiceExceptionAsync(
+                    failedArkViewServiceException);
             }
         }
 
@@ -60,6 +65,19 @@ namespace ARK.Apps.Mobile.Services.Views.ArkViews
             await this.loggingBroker.LogErrorAsync(arkViewDependencyException);
 
             return arkViewDependencyException;
+        }
+
+        private async ValueTask<ArkViewServiceException> CreateAndLogArkViewServiceExceptionAsync(
+         Xeption innerException)
+        {
+            var arkViewServiceException =
+                new ArkViewServiceException(
+                    message: "Ark view service error occurred, contact support.",
+                    innerException: innerException);
+
+            await this.loggingBroker.LogErrorAsync(arkViewServiceException);
+
+            return arkViewServiceException;
         }
     }
 }
