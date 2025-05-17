@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ARK.Apps.Mobile.Components.Bases;
 using ARK.Apps.Mobile.Components.Components;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
 using Bunit;
@@ -48,6 +49,12 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
             // then
             this.renderedArkComponent.Instance.Carousel
                 .Should().NotBeNull();
+
+            IReadOnlyList<IRenderedComponent<CarouselItemBase>> renderedCarouselComponentItems =
+                this.renderedArkComponent.FindComponents<CarouselItemBase>();
+
+            renderedCarouselComponentItems.Count.Should().Be(
+                retrievedArkViews.Count);
 
             this.arkViewServiceMock.Verify(service =>
                 service.RetrieveAllArkViewsAsync(),
