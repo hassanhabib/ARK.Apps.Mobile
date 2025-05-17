@@ -37,6 +37,16 @@ namespace ARK.Apps.Mobile.Services.Views.ArkViews
                 throw await CreateAndLogArkViewDependencyExceptionAsync(
                     failedArkViewDependencyException);
             }
+            catch (ArkServiceException arkServiceException)
+            {
+                var failedArkViewDependencyException =
+                    new FailedArkViewDependencyException(
+                        message: "Failed ark view dependency error occurred, contact support.",
+                        innerException: (Xeption)arkServiceException.InnerException);
+
+                throw await CreateAndLogArkViewDependencyExceptionAsync(
+                    failedArkViewDependencyException);
+            }
         }
 
         private async ValueTask<ArkViewDependencyException> CreateAndLogArkViewDependencyExceptionAsync(

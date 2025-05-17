@@ -3,9 +3,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
 using ARK.Apps.Mobile.Models.Views.ArkViews.Exceptions;
 using FluentAssertions;
@@ -25,7 +23,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Services.Views.ArkViews
             var failedArkViewDependencyException =
                 new FailedArkViewDependencyException(
                     message: "Failed ark view dependency error occurred, contact support.",
-                    innerException: (Xeption) arkDependencyException.InnerException);
+                    innerException: (Xeption)arkDependencyException.InnerException);
 
             var expectedArkViewDependencyException =
                 new ArkViewDependencyException(
