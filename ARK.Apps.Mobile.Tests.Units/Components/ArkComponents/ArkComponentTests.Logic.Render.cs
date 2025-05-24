@@ -2,6 +2,7 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,40 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
             defaultArkComponent.LoadingLabel.Should().BeNull();
             defaultArkComponent.ArkViewService.Should().BeNull();
             defaultArkComponent.Carousel.Should().BeNull();
+            this.arkViewServiceMock.VerifyNoOtherCalls();
+        }
+
+        [Fact]
+        public async Task ShouldRenderLoadingUponRetrievingArksAsync()
+        {
+            // given
+            List<ArkView> someArkViews =
+                CreateRandomArkViews();
+
+            string expectedLoadingMessage =
+                "Loading ...";
+
+            this.arkViewServiceMock.Setup(service =>
+                service.RetrieveAllArkViewsAsync())
+                    .ReturnsAsync(
+                        value: someArkViews,
+                        delay: TimeSpan.FromMilliseconds(1000));
+
+            // when
+            this.renderedArkComponent =
+                RenderComponent<ArkComponent>();
+
+            // then
+            this.renderedArkComponent.Instance.LoadingLabel
+                .Should().NotBeNull();
+
+            this.renderedArkComponent.Instance.LoadingLabel
+                .Value.Should().Be(expectedLoadingMessage);
+
+            this.arkViewServiceMock.Verify(service =>
+                service.RetrieveAllArkViewsAsync(),
+                    Times.Once);
+
             this.arkViewServiceMock.VerifyNoOtherCalls();
         }
 
