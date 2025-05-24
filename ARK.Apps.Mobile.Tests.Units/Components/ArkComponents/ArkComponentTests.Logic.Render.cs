@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using ARK.Apps.Mobile.Components.Bases;
 using ARK.Apps.Mobile.Components.Components;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
+using ARK.Apps.Mobile.Models.Views.Components.ArkComponents;
 using Bunit;
 using FluentAssertions;
 using Force.DeepCloner;
@@ -20,10 +21,15 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
         [Fact]
         public void ShouldRenderDefaultValues()
         {
-            // given . when 
+            // given
+            ArkComponentState expectedState =
+                ArkComponentState.Loading;
+
+            // when
             var defaultArkComponent = new ArkComponent();
 
             // then
+            defaultArkComponent.State.Should().Be(expectedState);
             defaultArkComponent.ArkViewService.Should().BeNull();
             defaultArkComponent.Carousel.Should().BeNull();
             this.arkViewServiceMock.VerifyNoOtherCalls();

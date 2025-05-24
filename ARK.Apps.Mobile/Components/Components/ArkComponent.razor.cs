@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Components.Bases;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
+using ARK.Apps.Mobile.Models.Views.Components.ArkComponents;
 using ARK.Apps.Mobile.Services.Views.ArkViews;
 using Microsoft.AspNetCore.Components;
 
@@ -15,6 +16,7 @@ namespace ARK.Apps.Mobile.Components.Components
     {
         [Inject]
         public IArkViewService ArkViewService { get; set; }
+        public ArkComponentState State { get; set; }
 
         public CarouselBase Carousel { get; set; }
         public List<ArkView> ArkViews { get; set; } = new List<ArkView>();
