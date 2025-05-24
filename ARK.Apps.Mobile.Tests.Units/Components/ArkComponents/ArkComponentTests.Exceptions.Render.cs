@@ -25,7 +25,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
 
             string expectedErrorMessage =
                 "We couldn't retrieve an act of kindness suggestion for you today." +
-                "Please look within and find a kindness that fits you.";
+                " Please look within and find a kindness that fits you.";
 
             this.arkViewServiceMock.Setup(service =>
                 service.RetrieveAllArkViewsAsync())
