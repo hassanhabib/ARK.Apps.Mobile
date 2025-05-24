@@ -30,6 +30,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
 
             // then
             defaultArkComponent.State.Should().Be(expectedState);
+            defaultArkComponent.LoadingLabel.Should().BeNull();
             defaultArkComponent.ArkViewService.Should().BeNull();
             defaultArkComponent.Carousel.Should().BeNull();
             this.arkViewServiceMock.VerifyNoOtherCalls();
