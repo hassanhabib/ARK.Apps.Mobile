@@ -2,16 +2,21 @@
 @using ARK.Apps.Mobile.Models.Views.Components.ArkComponents
 @using PrettyBlazor
 
-<Condition Evaluation=@IsLoadingState()>
-    <Match>
-        <LabelBase @ref=LoadingLabel 
+<Switch TValue=ArkComponentState Value=State>
+    <SwitchCase TValue=ArkComponentState When=ArkComponentState.Loading>
+        <LabelBase @ref=LoadingLabel
                    Value="Loading ..." />
-    </Match>
-    <NotMatch>
+    </SwitchCase>
+    <SwitchCase TValue=ArkComponentState When=ArkComponentState.Content>
         <CarouselBase @ref=@Carousel>
             <Iterations Items=@ArkViews Context=arkView>
                 <CarouselItemBase Value="@arkView.Act" />
             </Iterations>
         </CarouselBase>
-    </NotMatch>
-</Condition>
+    </SwitchCase>
+    <SwitchCase TValue=ArkComponentState When=ArkComponentState.Error>
+        <LabelBase @ref=ErrorLabel
+                   Value=@GetErrorMessage() />
+    </SwitchCase>
+</Switch>
+

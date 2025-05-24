@@ -25,15 +25,26 @@ namespace ARK.Apps.Mobile.Components.Components
 
         protected async override Task OnInitializedAsync()
         {
-            this.State = ArkComponentState.Loading;
+            try
+            {
+                this.State = ArkComponentState.Loading;
 
-            this.ArkViews = await this.ArkViewService
-                .RetrieveAllArkViewsAsync();
+                this.ArkViews = await this.ArkViewService
+                    .RetrieveAllArkViewsAsync();
 
-            this.State = ArkComponentState.Content;
+                this.State = ArkComponentState.Content;
+            }
+            catch
+            {
+                this.State = ArkComponentState.Error;
+            }
         }
 
-        private bool IsLoadingState() =>
-            this.State == ArkComponentState.Loading;
+        private string GetErrorMessage ()
+        {
+            return "We couldn't retrieve an act of kindness " +
+                "suggestion for you today." +
+                "Please look within and find a kindness that fits you.";
+        }
     }
 }
