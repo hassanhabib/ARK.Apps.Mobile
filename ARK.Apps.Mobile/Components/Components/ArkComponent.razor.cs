@@ -28,6 +28,11 @@ namespace ARK.Apps.Mobile.Components.Components
 
             this.ArkViews = await this.ArkViewService
                 .RetrieveAllArkViewsAsync();
+
+            this.State = ArkComponentState.Content;
         }
+
+        private bool IsLoadingState() =>
+            this.State == ArkComponentState.Loading;
     }
 }

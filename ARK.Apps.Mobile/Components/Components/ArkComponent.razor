@@ -1,10 +1,17 @@
 ﻿@using ARK.Apps.Mobile.Components.Bases
+@using ARK.Apps.Mobile.Models.Views.Components.ArkComponents
 @using PrettyBlazor
 
-<LabelBase @ref=LoadingLabel Value="Loading ..." />
-
-<CarouselBase @ref=@Carousel>
-    <Iterations Items=@ArkViews Context=arkView>
-        <CarouselItemBase Value="@arkView.Act" />
-    </Iterations>
-</CarouselBase>
+<Condition Evaluation=@IsLoadingState()>
+    <Match>
+        <LabelBase @ref=LoadingLabel 
+                   Value="Loading ..." />
+    </Match>
+    <NotMatch>
+        <CarouselBase @ref=@Carousel>
+            <Iterations Items=@ArkViews Context=arkView>
+                <CarouselItemBase Value="@arkView.Act" />
+            </Iterations>
+        </CarouselBase>
+    </NotMatch>
+</Condition>
