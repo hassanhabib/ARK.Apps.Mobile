@@ -44,7 +44,7 @@ namespace ARK.Apps.Mobile.Components.Components
         {
             return "We couldn't retrieve an act of kindness " +
                 "suggestion for you today." +
-                "Please look within and find a kindness that fits you.";
+                " Please look within and find a kindness that fits you.";
         }
     }
 }
