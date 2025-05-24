@@ -75,6 +75,9 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
         public async Task ShouldRenderArkViewsAsync()
         {
             // given
+            ArkComponentState expectedState =
+                ArkComponentState.Content;
+
             List<ArkView> randomArkViews =
                 CreateRandomArkViews();
 
@@ -90,6 +93,12 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.ArkComponents
                 RenderComponent<ArkComponent>();
 
             // then
+            this.renderedArkComponent.Instance.State
+                .Should().Be(expectedState);
+
+            this.renderedArkComponent.Instance.LoadingLabel
+                .Should().BeNull();
+
             this.renderedArkComponent.Instance.Carousel
                 .Should().NotBeNull();
 

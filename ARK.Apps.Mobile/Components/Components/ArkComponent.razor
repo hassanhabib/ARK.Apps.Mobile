@@ -1,6 +1,8 @@
 ﻿@using ARK.Apps.Mobile.Components.Bases
 @using PrettyBlazor
 
+<LabelBase @ref=LoadingLabel Value="Loading ..." />
+
 <CarouselBase @ref=@Carousel>
     <Iterations Items=@ArkViews Context=arkView>
         <CarouselItemBase Value="@arkView.Act" />

@@ -24,6 +24,8 @@ namespace ARK.Apps.Mobile.Components.Components
 
         protected async override Task OnInitializedAsync()
         {
+            this.State = ArkComponentState.Loading;
+
             this.ArkViews = await this.ArkViewService
                 .RetrieveAllArkViewsAsync();
         }
