@@ -18,6 +18,7 @@ namespace ARK.Apps.Mobile.Components.Components
         public IArkViewService ArkViewService { get; set; }
         public ArkComponentState State { get; set; }
         public LabelBase LoadingLabel { get; set; }
+        public LabelBase ErrorLabel { get; set; }
 
         public CarouselBase Carousel { get; set; }
         public List<ArkView> ArkViews { get; set; } = new List<ArkView>();
