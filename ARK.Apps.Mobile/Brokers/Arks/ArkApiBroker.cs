@@ -22,7 +22,7 @@ namespace ARK.Apps.Mobile.Brokers.Arks
         {
             this.httpClient = httpClient;
             this.configuration = configuration;
-            
+
             this.restfulApiFactoryClient =
                 GetRESTFulApiClient();
         }
@@ -33,7 +33,9 @@ namespace ARK.Apps.Mobile.Brokers.Arks
         private IRESTFulApiFactoryClient GetRESTFulApiClient()
         {
             string apiBaseUrl =
-                this.configuration.GetValue<string>("ArkApiBaseAddress");
+                this.configuration.GetValue<string>(
+                    key: "ArkApiBaseAddress");
+
             this.httpClient.BaseAddress = new Uri(apiBaseUrl);
 
             return new RESTFulApiFactoryClient(this.httpClient);

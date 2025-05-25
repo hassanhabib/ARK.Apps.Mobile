@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using ARK.Apps.Mobile.Brokers.Loggings;
 using ARK.Apps.Mobile.Models.Arks;
-using ARK.Apps.Mobile.Models.Arks.Exceptions;
 using ARK.Apps.Mobile.Models.Views.ArkViews;
 using ARK.Apps.Mobile.Services.Foundations;
 
@@ -33,7 +32,8 @@ namespace ARK.Apps.Mobile.Services.Views.ArkViews
             List<Ark> retrievedArks =
                 await this.arkService.RetrieveAllArksAsync();
 
-            return retrievedArks.Select(MapToArkView()).ToList();
+            return retrievedArks.Select(MapToArkView())
+                .ToList();
         });
 
         private static Func<Ark, ArkView> MapToArkView()

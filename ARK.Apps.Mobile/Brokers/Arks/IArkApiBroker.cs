@@ -5,6 +5,5 @@
 namespace ARK.Apps.Mobile.Brokers.Arks
 {
     internal partial interface IArkApiBroker
-    {
-    }
+    { }
 }

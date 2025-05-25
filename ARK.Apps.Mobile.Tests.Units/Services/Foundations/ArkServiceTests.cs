@@ -3,18 +3,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using ARK.Apps.Mobile.Brokers.Arks;
 using ARK.Apps.Mobile.Brokers.Loggings;
 using ARK.Apps.Mobile.Models.Arks;
 using ARK.Apps.Mobile.Services.Foundations;
 using Moq;
-using FluentAssertions;
-using Moq;
 using Tynamix.ObjectFiller;
-using Xeptions;
-using System.Linq;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using Xeptions;
 
 namespace ARK.Apps.Mobile.Tests.Units.Services.Foundations
