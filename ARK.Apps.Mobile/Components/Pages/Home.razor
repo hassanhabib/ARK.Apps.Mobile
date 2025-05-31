@@ -1,5 +1,31 @@
 ﻿@page "/"
+@using ARK.Apps.Mobile.Components.Bases
 
-<h1>Hello, world!</h1>
+<style>
+    .rotated-box{
+        margin-top: 300px;
+        width: 64px;
+        height: 64px;
+        background-color: #f8bbd9;
+        transform: rotate(45deg);
+    }
 
-Welcome to your new app.
+    .spinner{
+        align-self: center;
+        justify-content: center;
+    }
+
+    .e-spinner-pane .e-spinner-inner .e-spin-bootstrap5 {
+        stroke: #a855f7;
+        animation-duration: 1s !important;
+    }
+
+</style>
+
+<div class="rotated-box">
+
+    <SpinnerBase CssClass="spinner" 
+                 IsVisible=true
+                 Size="32"/>
+
+</div>
