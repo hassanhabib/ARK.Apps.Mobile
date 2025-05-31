@@ -2,12 +2,28 @@
 @using ARK.Apps.Mobile.Components.Bases
 
 <style>
+
+    @@keyframes pulse {
+        0%{
+            opacity: 0.999231;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 0.999231;
+        }
+    }
+
     .rotated-box{
         margin-top: 300px;
         width: 64px;
         height: 64px;
         background-color: #f8bbd9;
         transform: rotate(45deg);
+        animation: pulse 1s infinite;
     }
 
     .spinner{
