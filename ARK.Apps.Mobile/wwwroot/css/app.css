@@ -86,7 +86,3 @@ h1:focus {
         padding-left: env(safe-area-inset-left);
     }
 }
-
-.e-spinner-pane.e-customClass .e-spinner-inner .e-spin-material {
-    stroke: #a855f7;
-}
