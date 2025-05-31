@@ -2,14 +2,12 @@
 // Copyright (c) The Standard Organization, a coalition of the Good-Hearted Engineers 
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using ARK.Apps.Mobile.Models.Views.ArkViews;
-
-namespace ARK.Apps.Mobile.Services.Views.ArkViews
+namespace ARK.Apps.Mobile.Models.Views.Components.ArkComponents
 {
-    public interface IArkViewService
+    public enum ArkComponentState
     {
-        ValueTask<List<ArkView>> RetrieveAllArkViewsAsync();
+        Loading,
+        Content,
+        Error
     }
 }

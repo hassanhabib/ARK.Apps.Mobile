@@ -6,7 +6,7 @@ using System;
 
 namespace ARK.Apps.Mobile.Models.Views.ArkViews
 {
-    internal class ArkView
+    public class ArkView
     {
         public Guid Id { get; set; }
         public DateTimeOffset Date { get; set; }
