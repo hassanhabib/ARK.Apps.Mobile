@@ -108,6 +108,8 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingSpinners
                     {
                          new SharpKeyframes
                          {
+                            Name = "pulse",
+
                             Keyframes = new List<SharpKeyframe>
                             {
                                 new SharpKeyframe

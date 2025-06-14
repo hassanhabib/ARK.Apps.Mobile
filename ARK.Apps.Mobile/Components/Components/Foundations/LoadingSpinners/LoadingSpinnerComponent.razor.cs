@@ -47,55 +47,55 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
                 },
 
                 Keyframes = new List<SharpKeyframes>
+                {
+                    new SharpKeyframes
                     {
-                         new SharpKeyframes
-                         {
-                            Keyframes = new List<SharpKeyframe>
+                        Keyframes = new List<SharpKeyframe>
+                        {
+                            new SharpKeyframe
                             {
-                                new SharpKeyframe
-                                {
-                                    Selector = "0%",
+                                Selector = "0%",
 
-                                    Properties = new List<SharpKeyframeProperty>
+                                Properties = new List<SharpKeyframeProperty>
+                                {
+                                    new SharpKeyframeProperty
                                     {
-                                        new SharpKeyframeProperty
-                                        {
-                                            Name = "opacity",
-                                            Value = "0.999231"
-                                        }
+                                        Name = "opacity",
+                                        Value = "0.999231"
                                     }
-                                },
+                                }
+                            },
 
-                                new SharpKeyframe
+                            new SharpKeyframe
+                            {
+                                Selector = "50%",
+
+                                Properties = new List<SharpKeyframeProperty>
                                 {
-                                    Selector = "50%",
-
-                                    Properties = new List<SharpKeyframeProperty>
+                                    new SharpKeyframeProperty
                                     {
-                                        new SharpKeyframeProperty
-                                        {
-                                            Name = "opacity",
-                                            Value = "0.5"
-                                        }
+                                        Name = "opacity",
+                                        Value = "0.5"
                                     }
-                                },
+                                }
+                            },
 
-                                new SharpKeyframe
+                            new SharpKeyframe
+                            {
+                                Selector = "100%",
+
+                                Properties = new List<SharpKeyframeProperty>
                                 {
-                                    Selector = "100%",
-
-                                    Properties = new List<SharpKeyframeProperty>
+                                    new SharpKeyframeProperty
                                     {
-                                        new SharpKeyframeProperty
-                                        {
-                                            Name = "opacity",
-                                            Value = "1.0"
-                                        }
+                                        Name = "opacity",
+                                        Value = "1.0"
                                     }
                                 }
                             }
-                         }
+                        }
                     }
+                }
             };
         }
     }
