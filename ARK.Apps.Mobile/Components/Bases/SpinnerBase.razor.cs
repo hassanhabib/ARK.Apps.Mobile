@@ -13,5 +13,8 @@ namespace ARK.Apps.Mobile.Components.Bases
 
         [Parameter]
         public string CssClass { get; set; }
+
+        [Parameter]
+        public string Size { get; set; }
     }
 }
