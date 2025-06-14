@@ -66,6 +66,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingSpinners
             this.renderedLoadingSpinnerComponent
                 .Instance.Spinner.Size.Should()
                     .Be(expectedSpinnerSize);
+
+            this.renderedLoadingSpinnerComponent
+                .Instance.ComponentStyle.Should()
+                    .NotBeNull();
         }
     }
 }

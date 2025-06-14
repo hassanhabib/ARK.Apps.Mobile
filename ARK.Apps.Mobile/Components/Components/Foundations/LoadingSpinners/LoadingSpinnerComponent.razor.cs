@@ -14,5 +14,10 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
         public SpinnerBase Spinner { get; set; }
         public LoadingSpinnerComponentStyles Styles { get; set; }
         public StyleBase ComponentStyle { get; set; }
+
+        protected override void OnInitialized()
+        {
+            this.Styles = new LoadingSpinnerComponentStyles();
+        }
     }
 }
