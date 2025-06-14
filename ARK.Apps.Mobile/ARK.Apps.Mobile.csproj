@@ -66,6 +66,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
     <PackageReference Include="RESTFulSense.WebAssembly" Version="3.0.0" />
+    <PackageReference Include="SharpStyles" Version="1.0.1" />
     <PackageReference Include="Syncfusion.Blazor.Navigations" Version="29.2.4" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="29.2.4" />
   </ItemGroup>
