@@ -101,7 +101,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingSpinners
                     SpinnerStroke = new SharpStyle
                     {
                         Stroke = "#a855f7",
-                        AnimationDuration = "1s !important"
+                        AnimationDuration = "1.5s !important"
                     },
 
                     Keyframes = new List<SharpKeyframes>
