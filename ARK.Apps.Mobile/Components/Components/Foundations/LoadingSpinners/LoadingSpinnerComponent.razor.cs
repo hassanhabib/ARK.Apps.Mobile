@@ -13,6 +13,6 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
         public DivisionBase Divison { get; set; }
         public SpinnerBase Spinner { get; set; }
         public LoadingSpinnerComponentStyles Styles { get; set; }
-
+        public StyleBase ComponentStyle { get; set; }
     }
 }
