@@ -27,7 +27,6 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
             {
                 RotatedBox = new SharpStyle
                 {
-                    MarginTop = "300px",
                     Width = "64px",
                     Height = "64px",
                     BackgroundColor = "#f8bbd9",
