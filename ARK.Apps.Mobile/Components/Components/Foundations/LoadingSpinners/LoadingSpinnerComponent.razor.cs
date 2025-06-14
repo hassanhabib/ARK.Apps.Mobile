@@ -5,6 +5,9 @@
 using ARK.Apps.Mobile.Components.Bases;
 using ARK.Apps.Mobile.Models.Components.Foundations.LoadingSpinners;
 using Microsoft.AspNetCore.Components;
+using SharpStyles.Models;
+using SharpStyles.Models.Keyframes;
+using System.Collections.Generic;
 
 namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
 {
@@ -15,9 +18,86 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
         public LoadingSpinnerComponentStyles Styles { get; set; }
         public StyleBase ComponentStyle { get; set; }
 
-        protected override void OnInitialized()
+        protected override void OnInitialized() =>
+            this.Styles = SetupStyles();
+
+        private static LoadingSpinnerComponentStyles SetupStyles()
         {
-            this.Styles = new LoadingSpinnerComponentStyles();
+            return new LoadingSpinnerComponentStyles
+            {
+                RotatedBox = new SharpStyle
+                {
+                    MarginTop = "300px",
+                    Width = "64px",
+                    Height = "64px",
+                    BackgroundColor = "#f8bbd9",
+                    Transform = "rotate(45deg)",
+                    Animation = "pulse 1s infinite"
+                },
+
+                Spinner = new SharpStyle
+                {
+                    AlignSelf = "center",
+                    JustifyContent = "center"
+                },
+
+                SpinnerStroke = new SharpStyle
+                {
+                    Stroke = "#a855f7",
+                    AnimationDuration = "1s !important"
+                },
+
+                Keyframes = new List<SharpKeyframes>
+                    {
+                         new SharpKeyframes
+                         {
+                            Keyframes = new List<SharpKeyframe>
+                            {
+                                new SharpKeyframe
+                                {
+                                    Selector = "0%",
+
+                                    Properties = new List<SharpKeyframeProperty>
+                                    {
+                                        new SharpKeyframeProperty
+                                        {
+                                            Name = "opacity",
+                                            Value = "0.999231"
+                                        }
+                                    }
+                                },
+
+                                new SharpKeyframe
+                                {
+                                    Selector = "50%",
+
+                                    Properties = new List<SharpKeyframeProperty>
+                                    {
+                                        new SharpKeyframeProperty
+                                        {
+                                            Name = "opacity",
+                                            Value = "0.5"
+                                        }
+                                    }
+                                },
+
+                                new SharpKeyframe
+                                {
+                                    Selector = "100%",
+
+                                    Properties = new List<SharpKeyframeProperty>
+                                    {
+                                        new SharpKeyframeProperty
+                                        {
+                                            Name = "opacity",
+                                            Value = "1.0"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+            };
         }
     }
 }
