@@ -9,6 +9,7 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
 {
     public partial class LoadingDotsComponent : ComponentBase
     {
+        public StyleBase ComponentStyle { get; set; }
         public LargeHeaderBase LargeHeader { get; set; }
         public ParagraphBase Paragraph { get; set; }
         public DivisionBase DotsContainerDivision { get; set; }

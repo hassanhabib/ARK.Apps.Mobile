@@ -18,6 +18,9 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
 
             // then
             initialLoadingDotsComponent
+                .ComponentStyle.Should().BeNull();
+
+            initialLoadingDotsComponent
                 .LargeHeader.Should().BeNull();
 
             initialLoadingDotsComponent
@@ -44,8 +47,14 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
             string expectedLargeHeaderCssClass =
                 "large-header";
 
+            string expectedLargeHeaderText =
+                "Finding kindness...";
+
             string expectedParagraphCssClass =
                 "paragraph";
+
+            string expectedParagraphText =
+                "Preparing something beautiful for you";
 
             string expectedDotsContainerCssClass =
                 "loading-dots-container";
@@ -60,11 +69,20 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
 
             // then
             this.renderedLoadingDotsComponent
-                .Instance.LargeHeader.Should().NotBeNull();
+                .Instance.ComponentStyle.Should()
+                    .NotBeNull();
+
+            this.renderedLoadingDotsComponent
+                .Instance.LargeHeader.Should()
+                    .NotBeNull();
 
             this.renderedLoadingDotsComponent
                 .Instance.LargeHeader.CssClass
                     .Should().Be(expectedLargeHeaderCssClass);
+
+            this.renderedLoadingDotsComponent
+                .Instance.LargeHeader.Text
+                    .Should().Be(expectedLargeHeaderText);
 
             this.renderedLoadingDotsComponent
                 .Instance.Paragraph.Should().NotBeNull();
@@ -72,6 +90,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
             this.renderedLoadingDotsComponent
                 .Instance.Paragraph.CssClass
                     .Should().Be(expectedParagraphCssClass);
+
+            this.renderedLoadingDotsComponent
+                .Instance.Paragraph.Text
+                    .Should().Be(expectedParagraphText);
 
             this.renderedLoadingDotsComponent
                 .Instance.DotsContainerDivision
