@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using ARK.Apps.Mobile.Components.Bases;
 using ARK.Apps.Mobile.Models.Components.Foundations.LoadingDots;
 using Microsoft.AspNetCore.Components;
-using SharpStyles.Models.Keyframes;
 using SharpStyles.Models;
+using SharpStyles.Models.Keyframes;
 
 namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
 {
@@ -76,43 +76,42 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
                 },
 
                 Keyframes = new List<SharpKeyframes>
+                {
+                    new SharpKeyframes
                     {
-                         new SharpKeyframes
-                         {
-                            Name = "bounce",
+                        Name = "bounce",
 
-                            Keyframes = new List<SharpKeyframe>
+                        Keyframes = new List<SharpKeyframe>
+                        {
+                            new SharpKeyframe
                             {
-                                new SharpKeyframe
+                                Selector = "0%, 80%, 100%",
+
+                                Properties = new List<SharpKeyframeProperty>
+                            {
+                            new SharpKeyframeProperty
+                            {
+                                Name = "transform",
+                                Value = "scale(0)"
+                            }
+                        }
+                    },
+                            new SharpKeyframe
+                            {
+                                Selector = "40%",
+                                
+                                Properties = new List<SharpKeyframeProperty>
                                 {
-                                    Selector = "0%, 80%, 100%",
-
-                                    Properties = new List<SharpKeyframeProperty>
+                                    new SharpKeyframeProperty
                                     {
-                                        new SharpKeyframeProperty
-                                        {
-                                            Name = "transform",
-                                            Value = "scale(0)"
-                                        }
-                                    }
-                                },
-
-                                new SharpKeyframe
-                                {
-                                    Selector = "40%",
-
-                                    Properties = new List<SharpKeyframeProperty>
-                                    {
-                                        new SharpKeyframeProperty
-                                        {
-                                            Name = "transform",
-                                            Value = "scale(1)"
-                                        }
+                                        Name = "transform",
+                                        Value = "scale(1)"
                                     }
                                 }
                             }
-                         }
+                        }
                     }
+                }
             };
         }
     }

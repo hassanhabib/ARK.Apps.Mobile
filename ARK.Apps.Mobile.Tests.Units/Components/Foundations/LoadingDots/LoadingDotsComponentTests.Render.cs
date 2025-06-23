@@ -184,16 +184,16 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
 
                     Keyframes = new List<SharpKeyframes>
                     {
-                         new SharpKeyframes
-                         {
+                        new SharpKeyframes
+                        {
                             Name = "bounce",
 
                             Keyframes = new List<SharpKeyframe>
                             {
                                 new SharpKeyframe
                                 {
-                                    Selector = "0%, 80%, 100%",
-
+                                Selector = "0%, 80%, 100%",
+                                
                                     Properties = new List<SharpKeyframeProperty>
                                     {
                                         new SharpKeyframeProperty
@@ -203,11 +203,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
                                         }
                                     }
                                 },
-
                                 new SharpKeyframe
                                 {
                                     Selector = "40%",
-
+                                    
                                     Properties = new List<SharpKeyframeProperty>
                                     {
                                         new SharpKeyframeProperty
@@ -218,7 +217,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
                                     }
                                 }
                             }
-                         }
+                        }
                     }
                 };
 
