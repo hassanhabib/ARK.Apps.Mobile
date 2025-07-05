@@ -40,7 +40,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
         {
             // given 
             string expectedCardComponentCssClass =
-                "card-component";
+                "card-division";
 
             // when
             this.renderedLoadingOrchestrationComponent =
