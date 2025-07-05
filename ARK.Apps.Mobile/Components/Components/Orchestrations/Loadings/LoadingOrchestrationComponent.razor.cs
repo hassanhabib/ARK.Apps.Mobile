@@ -30,6 +30,7 @@ namespace ARK.Apps.Mobile.Components.Components.Orchestrations.Loadings
                 {
                     TextAlign = "center",
                     Display = "flex",
+                    FlexDirection = "column",
                     JustifyContent = "center",
                     AlignItems = "center",
                     Border = "none",
