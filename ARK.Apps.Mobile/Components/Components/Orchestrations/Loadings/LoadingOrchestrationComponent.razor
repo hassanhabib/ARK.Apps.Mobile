@@ -1,1 +1,13 @@
-﻿
+﻿@using ARK.Apps.Mobile.Components.Bases
+@using ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
+@using ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners
+
+<StyleBase @ref=@ComponentStyle
+           Styles=@Style />
+
+<DivisionBase @ref=@CardDivision>
+
+    <LoadingSpinnerComponent @ref=@LoadingSpinnerComponent />
+    <LoadingDotsComponent @ref=@LoadingDotsComponent />
+
+</DivisionBase>

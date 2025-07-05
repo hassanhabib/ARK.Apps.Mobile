@@ -18,10 +18,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
 
             // then
             initialLoadingOrchestrationComponent
-                .ComponentStyles.Should().BeNull();
+                .ComponentStyle.Should().BeNull();
 
             initialLoadingOrchestrationComponent
-                .Styles.Should().BeNull();
+                .Style.Should().BeNull();
 
             initialLoadingOrchestrationComponent
                 .CardDivision.Should().BeNull();
@@ -42,19 +42,22 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
 
             // then
             this.renderedLoadingOrchestrationComponent
-                .Instance.ComponentStyles.Should().NotBeNull();
+                .Instance.ComponentStyle.Should()
+                    .NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
-                .Instance.Styles.Should().NotBeNull();
+                .Instance.Style.Should().NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
                 .Instance.CardDivision.Should().NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
-                .Instance.LoadingSpinnerComponent.Should().NotBeNull();
+                .Instance.LoadingSpinnerComponent.Should()
+                    .NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
-                .Instance.LoadingDotsComponent.Should().NotBeNull();
+                .Instance.LoadingDotsComponent.Should()
+                    .NotBeNull();
         }
     }
 }
