@@ -103,6 +103,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
                     .Should().Be(expectedParagraphText);
 
             this.renderedLoadingDotsComponent
+                .Instance.DotsLoaderContainerDivision
+                    .Should().NotBeNull();
+
+            this.renderedLoadingDotsComponent
                 .Instance.DotsContainerDivision
                     .Should().NotBeNull();
 
