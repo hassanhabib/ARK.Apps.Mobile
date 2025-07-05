@@ -32,5 +32,29 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
             initialLoadingOrchestrationComponent
                 .LoadingDotsComponent.Should().BeNull();
         }
+
+        [Fact]
+        public void ShouldRenderComponentOnInitialize()
+        {
+            // given . when
+            this.renderedLoadingOrchestrationComponent =
+                RenderComponent<LoadingOrchestrationComponent>();
+
+            // then
+            this.renderedLoadingOrchestrationComponent
+                .Instance.ComponentStyles.Should().NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.Styles.Should().NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.CardDivision.Should().NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.LoadingSpinnerComponent.Should().NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.LoadingDotsComponent.Should().NotBeNull();
+        }
     }
 }
