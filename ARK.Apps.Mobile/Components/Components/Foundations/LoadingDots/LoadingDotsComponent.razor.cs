@@ -34,15 +34,13 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
                 {
                     FontSize = "20px",
                     FontWeight = "600",
-                    Color = "rgb(31, 41, 55)",
-                    MarginBottom = "24px"
+                    Color = "rgb(31, 41, 55)"
                 },
 
                 Paragraph = new SharpStyle
                 {
                     Color = "rgb(107, 114, 128)",
-                    FontSize = "14px",
-                    MarginBottom = "24px"
+                    FontSize = "14px"
                 },
 
                 DotsContainerDivision = new SharpStyle
@@ -100,7 +98,7 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
                             new SharpKeyframe
                             {
                                 Selector = "40%",
-                                
+
                                 Properties = new List<SharpKeyframeProperty>
                                 {
                                     new SharpKeyframeProperty

@@ -147,13 +147,13 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
                     {
                         FontSize = "20px",
                         FontWeight = "600",
-                        Color = "rgb(31, 41, 55)",
+                        Color = "rgb(31, 41, 55)"
                     },
 
                     Paragraph = new SharpStyle
                     {
                         Color = "rgb(107, 114, 128)",
-                        FontSize = "14px",
+                        FontSize = "14px"
                     },
 
                     DotsContainerDivision = new SharpStyle
