@@ -3,6 +3,7 @@
 // ----------------------------------------------------------------------------------
 
 using ARK.Apps.Mobile.Components.Components.Orchestrations.Loadings;
+using ARK.Apps.Mobile.Models.Components.Orchestrations.Loadings;
 using FluentAssertions;
 
 namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
@@ -36,7 +37,11 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
         [Fact]
         public void ShouldRenderComponentOnInitialize()
         {
-            // given . when
+            // given 
+            string expectedCardComponentCssClass =
+                "card-component";
+
+            // when
             this.renderedLoadingOrchestrationComponent =
                 RenderComponent<LoadingOrchestrationComponent>();
 
@@ -52,12 +57,33 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
                 .Instance.CardDivision.Should().NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
+                .Instance.CardDivision.CssClass.Should()
+                    .Be(expectedCardComponentCssClass);
+
+            this.renderedLoadingOrchestrationComponent
                 .Instance.LoadingSpinnerComponent.Should()
                     .NotBeNull();
 
             this.renderedLoadingOrchestrationComponent
                 .Instance.LoadingDotsComponent.Should()
                     .NotBeNull();
+        }
+
+        [Fact]
+        public void ShouldRenderComponentStyles()
+        {
+            // given
+            var expectedStyles =
+                new LoadingOrchestrationComponentStyles
+                {
+
+                };
+
+            // when
+            this.renderedLoadingOrchestrationComponent =
+                RenderComponent<LoadingOrchestrationComponent>();
+
+            // then
         }
     }
 }
