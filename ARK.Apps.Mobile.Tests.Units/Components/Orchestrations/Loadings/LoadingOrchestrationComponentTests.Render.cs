@@ -5,6 +5,7 @@
 using ARK.Apps.Mobile.Components.Components.Orchestrations.Loadings;
 using ARK.Apps.Mobile.Models.Components.Orchestrations.Loadings;
 using FluentAssertions;
+using SharpStyles.Models;
 
 namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
 {
@@ -76,7 +77,15 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
             var expectedStyles =
                 new LoadingOrchestrationComponentStyles
                 {
-
+                    CardDivision = new SharpStyle
+                    {
+                        TextAlign = "center",
+                        Display = "flex",
+                        JustifyContent = "center",
+                        AlignItems = "center",
+                        Border = "none",
+                        Gap = "24px"
+                    }
                 };
 
             // when
@@ -84,6 +93,17 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
                 RenderComponent<LoadingOrchestrationComponent>();
 
             // then
+            this.renderedLoadingOrchestrationComponent
+                .Instance.ComponentStyle.Should()
+                    .NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.Style.Should()
+                    .NotBeNull();
+
+            this.renderedLoadingOrchestrationComponent
+                .Instance.Style.Should()
+                    .BeEquivalentTo(expectedStyles);
         }
     }
 }
