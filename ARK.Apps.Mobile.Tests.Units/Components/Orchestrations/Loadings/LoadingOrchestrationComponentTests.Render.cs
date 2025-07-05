@@ -81,6 +81,7 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Orchestrations.Loadings
                     {
                         TextAlign = "center",
                         Display = "flex",
+                        FlexDirection = "column",
                         JustifyContent = "center",
                         AlignItems = "center",
                         Border = "none",
