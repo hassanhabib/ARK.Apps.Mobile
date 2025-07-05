@@ -7,6 +7,7 @@ using ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots;
 using ARK.Apps.Mobile.Components.Components.Foundations.LoadingSpinners;
 using ARK.Apps.Mobile.Models.Components.Orchestrations.Loadings;
 using Microsoft.AspNetCore.Components;
+using SharpStyles.Models;
 
 namespace ARK.Apps.Mobile.Components.Components.Orchestrations.Loadings
 {
@@ -19,6 +20,22 @@ namespace ARK.Apps.Mobile.Components.Components.Orchestrations.Loadings
         public LoadingDotsComponent LoadingDotsComponent { get; set; }
 
         protected override void OnInitialized() =>
-            this.Style = new LoadingOrchestrationComponentStyles();
+            this.Style = SetupStyles();
+
+        private static LoadingOrchestrationComponentStyles SetupStyles()
+        {
+            return new LoadingOrchestrationComponentStyles
+            {
+                CardDivision = new SharpStyle
+                {
+                    TextAlign = "center",
+                    Display = "flex",
+                    JustifyContent = "center",
+                    AlignItems = "center",
+                    Border = "none",
+                    Gap = "24px"
+                }
+            };
+        }
     }
 }
