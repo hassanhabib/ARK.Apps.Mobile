@@ -17,6 +17,7 @@ namespace ARK.Apps.Mobile.Components.Components.Foundations.LoadingDots
         public LoadingDotsComponentStyle Style { get; set; }
         public LargeHeaderBase LargeHeader { get; set; }
         public ParagraphBase Paragraph { get; set; }
+        public DivisionBase DotsLoaderContainerDivision { get; set; }
         public DivisionBase DotsContainerDivision { get; set; }
         public DivisionBase Dot0Division { get; set; }
         public DivisionBase Dot1Division { get; set; }
