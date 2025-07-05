@@ -1,26 +1,29 @@
 @using ARK.Apps.Mobile.Components.Bases
 
 <StyleBase @ref=@ComponentStyle
-		   Styles=@Style />
+           Styles=@Style />
 
-<LargeHeaderBase @ref=@LargeHeader
-				 Text="Finding kindness..."
-				 CssClass="large-header" />
+<DivisionBase @ref=@DotsLoaderContainerDivision>
 
-<ParagraphBase @ref=@Paragraph
-			   Text="Preparing something beautiful for you"
-			   CssClass="paragraph" />
+    <LargeHeaderBase @ref=@LargeHeader
+                     Text="Finding kindness..."
+                     CssClass="large-header" />
 
-<DivisionBase @ref=@DotsContainerDivision
-			  CssClass="loading-dots-container">
+    <ParagraphBase @ref=@Paragraph
+                   Text="Preparing something beautiful for you"
+                   CssClass="paragraph" />
 
-	<DivisionBase @ref=@Dot0Division
-				  CssClass="dot dot-0" />
+    <DivisionBase @ref=@DotsContainerDivision
+                  CssClass="loading-dots-container">
 
-	<DivisionBase @ref=@Dot1Division
-				  CssClass="dot dot-1" />
+        <DivisionBase @ref=@Dot0Division
+                      CssClass="dot dot-0" />
 
-	<DivisionBase @ref=@Dot2Division
-				  CssClass="dot dot-2" />
+        <DivisionBase @ref=@Dot1Division
+                      CssClass="dot dot-1" />
 
+        <DivisionBase @ref=@Dot2Division
+                      CssClass="dot dot-2" />
+
+    </DivisionBase>
 </DivisionBase>

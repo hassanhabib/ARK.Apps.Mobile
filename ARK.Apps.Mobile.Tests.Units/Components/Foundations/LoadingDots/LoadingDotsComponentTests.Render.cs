@@ -30,6 +30,9 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
             initialLoadingDotsComponent
                 .Paragraph.Should().BeNull();
 
+            initialLoadingDotsComponent.DotsLoaderContainerDivision
+                .Should().BeNull();
+
             initialLoadingDotsComponent
                 .DotsContainerDivision.Should()
                     .BeNull();
@@ -98,6 +101,10 @@ namespace ARK.Apps.Mobile.Tests.Units.Components.Foundations.LoadingDots
             this.renderedLoadingDotsComponent
                 .Instance.Paragraph.Text
                     .Should().Be(expectedParagraphText);
+
+            this.renderedLoadingDotsComponent
+                .Instance.DotsLoaderContainerDivision
+                    .Should().NotBeNull();
 
             this.renderedLoadingDotsComponent
                 .Instance.DotsContainerDivision
